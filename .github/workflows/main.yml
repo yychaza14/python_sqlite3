@@ -1,31 +1,31 @@
-name: Bybit and binance P2P Data Collection
+name: Timestamp Tracker
 
 on:
+  # Run every 12 hours
   schedule:
-    # Run every hour
     - cron: '*/5 * * * *'  # Run every 5 minutes
-  workflow_dispatch:  # Allows manual triggering
+  
+  # Allow manual triggering
+  workflow_dispatch:
 
 jobs:
-  collect-data:
+  track-timestamp:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Explicitly grant write permission
-      
+    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
+    
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-      python-version: '3.9'
-
+        python-version: '3.9'
+    
     - name: Run timestamp tracking script
       run: |
         python -m pip install --upgrade pip
         python timestamp_tracker.py
-
+    
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
