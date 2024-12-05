@@ -27,9 +27,9 @@ jobs:
         python timestamp_tracker.py
 
     - name: Commit and push changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add data/timestamps.db
-          git commit -m "Update timestamps database" || exit 0
-          git push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/timestamps.db
+        git commit -m "Update timestamps database" || exit 0
+        git push
